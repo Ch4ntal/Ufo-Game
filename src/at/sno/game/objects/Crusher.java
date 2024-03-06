@@ -43,7 +43,7 @@ public class Crusher extends spielobjekt{
 
         if (pressed) {
             acceleration+= delta;
-            if (acceleration > 15) acceleration=15;
+            if (acceleration > 50) acceleration=50;
         }else {
             acceleration = 0.1f;
         }
@@ -51,6 +51,13 @@ public class Crusher extends spielobjekt{
         shape.setCenterY(this.getY());
 
 
+    }
+
+    public boolean intersects(Shape shape){
+        if (shape != null) {
+            return this.getShape().intersects(shape);
+        }
+        return false;
     }
 
 }
