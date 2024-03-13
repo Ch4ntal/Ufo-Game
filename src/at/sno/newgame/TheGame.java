@@ -34,7 +34,7 @@ public class TheGame extends BasicGame {
     }
 
     public static void main(String[] args) throws SlickException {
-        AppGameContainer container = new AppGameContainer(new at.sno.game.objects.EasyGame());
+        AppGameContainer container = new AppGameContainer(new at.sno.newgame.TheGame());
         container.setDisplayMode(1024, 768, false);
         container.setMinimumLogicUpdateInterval(25);
         container.setTargetFrameRate(60);
@@ -43,16 +43,16 @@ public class TheGame extends BasicGame {
     }
 
     public void init(GameContainer container) throws SlickException {
-        this.background = new Image("assets/pics/background.png");
+        this.background = new Image("assets/pics/nyan_cat_background.jpg");
         this.MpoopList = new ArrayList();
 
         for(int i = 1; i <= 10; ++i) {
-            this.MpoopList.add(new poop(100, 100, new Image("assets/pics/crusher.png")));
-            this.nyancat = new nyancat(512, 700, new Image("assets/pics/nyancat.gif"), container.getInput());
-            this.music = new Music("testdata/kirby.ogg", true);
+            this.MpoopList.add(new poop(100, 100, new Image("assets/pics/poop.png")));
+            this.nyancat = new nyancat(400, 91, new Image("assets/pics/nyancat.png"), container.getInput());
+            this.music = new Music("assets/music/nyancat.wav", true);
             this.music.loop();
             this.music.setVolume(1.0F);
-            this.sound = new Sound("testdata/burp.aif");
+            this.sound = new Sound("assets/sounds/deathsound.wav");
             this.font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
         }
 
@@ -92,7 +92,7 @@ public class TheGame extends BasicGame {
                 ++this.hit;
             }
 
-            if (u.getY() > 768) {
+            if (u.getX() > 1024) {
                 ++this.miss;
                 u.setRandomPosition();
             }

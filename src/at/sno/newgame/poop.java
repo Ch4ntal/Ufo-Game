@@ -32,10 +32,10 @@ public class poop extends spielobjekt {
     @Override
     public void update(int delta) {
         this.geschwindigkeit = (delta*this.acceleration + geschwindigkeit);
-        if(this.getY() > (768+this.getHeight())) {
+        if(this.getX() > (1024+this.getHeight())) {
             this.setRandomPosition();
         }
-        this.setY(this.getY()+(int) this.geschwindigkeit);
+        this.setX(this.getX()+(int) this.geschwindigkeit);
         shape.setCenterX(this.getX());
         shape.setCenterY(this.getY());
     }
@@ -44,11 +44,11 @@ public class poop extends spielobjekt {
         Random r = new Random();
         int ry = 0;
         int rx = 0;
-        rx = r.nextInt(1024-this.getWidth()+1-0) +(this.getWidth()/2);
+        rx = r.nextInt(1024+this.getWidth()+1-0) +(this.getWidth()/2);
         // y=0 --> oben
-        ry = r.nextInt(600+1+this.getHeight())+this.getHeight();
-        this.setY(-ry);
-        this.setX(rx);
+        ry = r.nextInt(600-1+this.getHeight())+this.getHeight();
+        this.setY(ry);
+        this.setX(-rx);
         setRandomAcceleration();
     }
     private void setRandomAcceleration(){
